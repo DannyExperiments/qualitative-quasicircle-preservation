@@ -1,6 +1,7 @@
 # Qualitative quasicircle preservation implies quasiconformality
 
 [![Repository verification](https://github.com/DannyExperiments/qualitative-quasicircle-preservation/actions/workflows/verify.yml/badge.svg?branch=main)](https://github.com/DannyExperiments/qualitative-quasicircle-preservation/actions/workflows/verify.yml) · [![Replay verification](https://github.com/DannyExperiments/qualitative-quasicircle-preservation/actions/workflows/replay.yml/badge.svg?branch=main)](https://github.com/DannyExperiments/qualitative-quasicircle-preservation/actions/workflows/replay.yml) · [![PDF build](https://github.com/DannyExperiments/qualitative-quasicircle-preservation/actions/workflows/pdf.yml/badge.svg?branch=main)](https://github.com/DannyExperiments/qualitative-quasicircle-preservation/actions/workflows/pdf.yml)
+[![DOI](visualization/version-doi.svg)](https://doi.org/10.5281/zenodo.24601747)
 
 Every homeomorphism of a closed oriented Riemann surface that sends quasicircles to quasicircles is quasiconformal. On a surface of positive genus, the essential quasicircles suffice. For the essential quasicircle graph in genus at least two, its full automorphism group is therefore the quasiconformal group.
 
