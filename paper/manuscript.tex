@@ -1,0 +1,220 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.12in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\setlength{\emergencystretch}{2em}
+\DeclareMathSizes{8}{8}{8}{8}
+\DeclareMathSizes{9}{9}{8}{8}
+\DeclareMathSizes{10.95}{10.95}{8}{8}
+\DeclareFontFamily{OMX}{cmex}{}
+\DeclareFontShape{OMX}{cmex}{m}{n}{<-> cmex10}{}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\title[Qualitative quasicircle preservation]{Qualitative quasicircle preservation implies quasiconformality}
+\date{}
+\begin{document}
+\begin{abstract}
+A homeomorphism of a closed oriented Riemann surface that sends every
+quasicircle to a quasicircle is quasiconformal. In positive genus,
+essential quasicircles suffice. The proof combines a sequence of
+large-distortion triples into one quasicircle whose image fails bounded
+turning. This answers a question of Booth, Nolte and Verberne and identifies
+the full automorphism group of their essential quasicircle graph.
+\end{abstract}
+\maketitle
+
+\section{Question and statement}
+Booth, Nolte and Verberne~\cite[Section 1]{BNV} ask whether every
+homeomorphism of a closed surface sending quasicircles to quasicircles
+is quasiconformal. Their graph theorem applies in genus at least two
+and permits orientation reversal. We use the same convention for
+quasiconformality.
+
+\begin{theorem}\label{main}
+Let \(S\) be a closed oriented Riemann surface and let \(f:S\to S\) be
+a homeomorphism. If \(f\) takes each quasicircle to a quasicircle, then
+\(f\) is quasiconformal. When \(S\) has positive genus, it suffices to
+test essential quasicircles.
+\end{theorem}
+
+The image quality bound may depend on the entire input curve. Only
+forward preservation is assumed. Gehring's Definition~12 for plane
+self-homeomorphisms~\cite{Gehring} asks for a uniform supremum of a
+four-point constant over images of round circles. Aseev's
+criteria~\cite{Aseev2014,Aseev2016} likewise require a common bound.
+Booth, Nolte and Verberne~\cite[Section 5.3]{BNV} put each quadruple
+on its own essential curve and use weak coarse order preservation
+to obtain a common image bound. Our construction puts infinitely
+many distortion witnesses on a single essential curve.
+
+\section{Proof of Theorem~\ref{main}}
+An embedded circle \(C\) has bounded turning if for every \(x,y\in C\)
+the smaller diameter of its two subarcs from \(x\) to \(y\) is
+at most \(K d(x,y)\), with \(K\) independent of \(x,y\). We use
+the equivalence with quasicircularity, by the classical Ahlfors
+criterion~\cite{Ahlfors} in the plane or sphere and by
+Remark~1 and Lemma~2.8 of~\cite{BNV} for essential curves.
+Distances in a relatively compact subdisk of a conformal chart
+are comparable with Euclidean distances after shrinking the disk.
+All smooth metrics on the compact surface are bilipschitz equivalent.
+
+\paragraph{Distinct centers.}
+Suppose \(f\) is not quasiconformal. Choose a relatively compact open
+set \(W\) in a conformal chart whose closure is mapped into a target
+chart, on which the coordinate map \(F\) is not quasiconformal.
+A finite cover by such coordinate neighborhoods would give a global
+bound if every restriction were quasiconformal. Define
+\[
+ H(z)=\limsup_{r\downarrow0}
+ \frac{\max_{|u-z|=r}|F(u)-F(z)|}{\min_{|u-z|=r}|F(u)-F(z)|}.
+\]
+For every \(M\) there are infinitely many \(z\in W\) with \(H(z)>M\).
+Otherwise the metric criterion~\cite{Vaisala} gives a uniform
+quasiconformal bound on \(W\) off finitely many points. These points
+are removable. In the modulus formulation the families of curves
+meeting the punctures or their images have modulus zero. Near each
+puncture, arbitrarily small multiples of \(1/(r\log(1/r))\) have
+arbitrarily small \(L^2\) norm and infinite integral along any
+nonconstant rectifiable curve reaching the puncture. Adding such
+zero-modulus families back preserves the modulus comparisons.
+
+Choose distinct \(z_j\) with \(H(z_j)\to\infty\) and pass to a
+subsequence converging to \(z_*\in\overline W\), deleting a center
+equal to \(z_*\) if needed. After translating \(z_*\) to \(0\),
+taking a convergent subsequence of approach directions, and rotating,
+write \(z_j=(t_j,y_j)\) with \(t_j>0\), \(|y_j|\le t_j/4\) and
+\(t_{j+1}<t_j/4\). Choose \(r_j<t_j/100\) so that the max/min ratios
+on the circles of radius \(r_j\) tend to infinity. Shrink the radii
+further within the available arbitrarily small distortion witnesses
+so that \(B(z_j,8r_j)\) lies in a fixed small chart rectangle about
+\(0\).
+
+\paragraph{Separated triples.}
+Start with a maximum and a minimum point on each circle. If the
+angle between their directions is outside \([\pi/4,3\pi/4]\), use
+an intermediate point at a right angle to the maximum direction.
+Its angle from the minimum direction lies in \([\pi/4,3\pi/4]\)
+as well. At least one of the two successive ratios through the
+intermediate point is at least the square root of the original
+ratio. Thus we obtain points \(a_j,b_j\) with the stated angle
+separation and
+\[
+ \frac{|F(a_j)-F(z_j)|}{|F(b_j)-F(z_j)|}\longrightarrow\infty.
+\]
+
+\paragraph{Uniform local patch.}
+Normalize \(z=0\) and \( |a|=|b|=1\). Let \(\theta\) be the angle
+between \(a\) and \(b\), and \(e\) the unit bisector of the directed
+segments \(a\) and \((b-a)/|b-a|\). Their dot product is
+\(-\sin(\theta/2)\), so their projections onto \(e\) are both
+at least \(\sin(\pi/16)\). In coordinates with horizontal axis \(e\),
+\(0\to a\to b\) is the graph of a function \(h\) of uniformly
+bounded slope and height at most one, with
+\(0<e\cdot a<e\cdot b\le1\). Extend \(h\) by zero to the left of \(0\),
+linearly to zero at \(t=2\) on the right, and by zero thereafter.
+The map
+\[
+ G(t,u)=(t,u+h(t)\rho(u)),\qquad
+ \rho(u)=\max(0,1-|u|/2)
+\]
+is uniformly bilipschitz. Each vertical fiber is sent onto itself
+by an increasing map with a lower Lipschitz bound \(1/2\).
+The uniform Lipschitz bound in \(t\) then gives the inverse
+Lipschitz estimate on pairs from different fibers. Its support
+lies in \(B(0,4)\).
+
+Let \(R\) rotate the original horizontal axis to \(e\). Let \(T\)
+be the radial twist equal to \(R\) up to radius \(4\), tapering
+linearly in angle to the identity at radius \(8\), and equal to
+the identity thereafter. Choose the rotation angle with absolute
+value at most \(\pi\). Comparing the rotating vectors first at
+the smaller radius bounds the error by the smaller radius times
+the angle difference. This gives a uniform Lipschitz bound, and
+the same estimate with the opposite angle controls the inverse.
+The patch \(R\circ G\circ R^{-1}\circ T\) is uniformly bilipschitz,
+fixes the exterior of \(B(0,8)\), and sends the diameter through
+\(0\) to an arc containing \(0,a,b\) in that order. Indeed, on
+\(0\le t\le e\cdot b\) the image of \((t,0)\) is \(R(t,h(t))\).
+Rescale and translate the patch to each \(B(z_j,8r_j)\).
+
+\paragraph{A single witness curve.}
+Choose a smooth embedded circle meeting a sufficiently small
+rectangle about \(0\) in just a horizontal arc, and fix \(w\) on
+the circle outside that rectangle. In positive genus start with
+a smooth essential circle, move a point and its tangent by
+smooth ambient isotopies, and straighten the local graph with
+a supported smooth shear. A contractible circle with the same
+local geometry also serves for the all-quasicircle test on the
+sphere.
+
+After discarding a finite prefix, replace the horizontal arc
+with a graph whose height is \(y_j\) on each disjoint interval
+\([t_j-8r_j,t_j+8r_j]\). Interpolate linearly on the bounded gaps
+and to zero at the positive end, and take height zero at and to
+the left of \(0\). The bounds on \(t_j,y_j,r_j\) give uniformly
+bounded slopes on the gaps and continuity at \(0\), so the
+graph is Lipschitz across \(0\) as well. For example the gap
+between consecutive plateaus is greater than \(0.65t_j\) and
+the height difference is at most \(5t_j/16\). Retaining sufficiently
+small centers keeps the graph away from the top and bottom edges.
+Multiplying the height by a parameter gives an isotopy relative
+to the arc endpoints. The resulting circle is a quasicircle by
+bounded turning on local Lipschitz graphs and compactness, and it
+crosses each support disk along the horizontal diameter.
+
+Apply the patches on the pairwise disjoint disks and the identity
+elsewhere. The pasted map is bilipschitz. For points in different
+disks, split their straight segment at the disks' fixed boundaries.
+Summing the estimates on those segments gives the common Lipschitz
+bound. For one point outside the disks one split suffices, and the
+same proof for the inverse gives the lower bound. Each disk is
+preserved and the family accumulates inside the chart. The map
+extends by identity to the surface and preserves the isotopy
+class, since in each disk the supported homeomorphism is isotopic
+to the identity relative to its boundary by radial contraction,
+and the support diameters tend to zero. The image curve \(C\)
+is a quasicircle containing \(z_j,a_j,b_j\) in order on each
+diameter replacement. The complementary arc from \(b_j\) to
+\(z_j\) contains \(w\).
+
+Now the \(f(a_j)\)-containing arc from \(f(z_j)\) to \(f(b_j)\)
+has diameter at least a fixed positive multiple of
+\(|F(a_j)-F(z_j)|\). The complementary arc contains \(f(w)\)
+and its diameter is bounded below by a positive constant since
+\(f(z_j)\to f(z_*)\ne f(w)\). The endpoint distance is comparable
+with \(|F(b_j)-F(z_j)|\), which tends to zero. The diameter of each
+arc divided by the endpoint distance therefore tends to infinity.
+This contradicts bounded turning of \(f(C)\) and proves the theorem.
+
+\section{Worked example}
+Consider the polygon with vertices \(z=(0,0),a=(1,0),b=(0,1)\),
+and \(w=(-1,-1)\) in that cyclic order. For \(L\ge1\) let
+\(A_L(x,y)=(Lx,y)\). The two arcs of the image from \(A_L(z)\)
+to \(A_L(b)\) contain \(A_L(a)\) and \(A_L(w)\), respectively,
+so their diameters are at least \(L\) and \(\sqrt{L^2+1}\).
+Their common endpoint distance is one. At \(L=8\) this pair forces
+a bounded-turning constant of at least \(8\). Each fixed \(A_L\)
+is quasiconformal. The example explains the turning estimate for
+one triple, while the proof produces arbitrarily large witnesses
+for a single \(f\) and a single \(C\).
+
+\begin{corollary}
+For a closed oriented surface \(S\) of genus at least two,
+\(\mathcal Q(S)\to\operatorname{Aut}\mathcal{QC}^{\dagger}(S)\)
+is an isomorphism.
+\end{corollary}
+\begin{proof}
+The first assertion of Theorem A in~\cite{BNV} represents every
+graph automorphism by a homeomorphism. It takes every essential
+quasicircle to a quasicircle, so Theorem~\ref{main} makes the
+representing map quasiconformal. Faithfulness follows from
+Theorem A, which also implies that every graph automorphism
+is coarsely order preserving.
+\end{proof}
+
+\bibliographystyle{amsplain}
+\begingroup\raggedright
+\bibliography{references}
+\endgroup
+\end{document}

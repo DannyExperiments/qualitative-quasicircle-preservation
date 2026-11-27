@@ -1,0 +1,2 @@
+PASS: affine stretch 8 gives squared endpoint and arc witness distances 1, 64, 65
+PASS: 40 plateau disks obey the separation and interpolation slope estimates

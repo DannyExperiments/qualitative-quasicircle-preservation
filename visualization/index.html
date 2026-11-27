@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quasicircle preservation · turning witness</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#101924;color:#f0f5f6}
+body{max-width:880px;margin:auto;padding:2rem 1rem}
+h1{font-size:clamp(1.65rem,4vw,2.7rem);line-height:1.1;margin:.4rem 0}
+p{line-height:1.52;color:#c4d2dc;max-width:62ch}
+svg{width:100%;height:auto;background:#172736;border:1px solid #405569;border-radius:14px;display:block}
+.controls{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin:1rem 0}
+label{display:flex;gap:.65em;align-items:center}
+button{background:#e2eff3;color:#172736;border:0;border-radius:6px;padding:.55em .8em;font:inherit;cursor:pointer}
+input[type=range]{max-width:36vw}
+.key{display:inline-block;width:.7em;height:.7em;border-radius:50%;margin-right:.35em}
+small{color:#aabdc8}
+</style>
+<main>
+<h1>Two arcs, one short chord</h1>
+<p>The four vertices occur in the order z → a → b → w. The source and its horizontally stretched image are drawn on two parallel planes with a shared scale.</p>
+<svg id="diagram" viewBox="0 0 640 465" role="img" aria-label="The marked source quadrilateral and its stretched image, with their two arcs between z and b"></svg>
+<div class="controls">
+<label>Stretch <input id="stretch" type="range" min="1" max="8" value="8" step="1"></label>
+<label>Rotation <input id="angle" type="range" min="0" max="360" value="14" step="1"></label>
+<button id="spin" type="button" aria-pressed="false">Rotate</button>
+</div>
+<p id="result" aria-live="polite"></p>
+<p><span class="key" style="background:#78ead9"></span>Arc through a &nbsp; <span class="key" style="background:#ffc883"></span>Arc through w &nbsp; <span class="key" style="background:#e5ecf3"></span>Endpoint chord</p>
+<small>Each fixed stretch is quasiconformal. This example checks the diameter estimate used separately at each scale in the proof.</small>
+</main>
+<script>
+const diagram = document.getElementById("diagram");
+const stretch = document.getElementById("stretch");
+const angle = document.getElementById("angle");
+const spin = document.getElementById("spin");
+const result = document.getElementById("result");
+const cyan = "#78ead9", gold = "#ffc883", pale = "#e5ecf3";
+const names = ["z", "a", "b", "w"];
+let playing = false, frame;
+function element(tag, attrs, value) {
+  const node = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  Object.entries(attrs).forEach(([key, val]) => node.setAttribute(key, val));
+  if (value !== undefined) node.textContent = value;
+  diagram.append(node);
+}
+function draw() {
+  const L = Number(stretch.value), a = Number(angle.value) * Math.PI / 180;
+  const c = Math.cos(a), s = Math.sin(a);
+  diagram.replaceChildren();
+  function project([x, y], h) {
+    return [320 + 29 * (x*c - y*s), h + .47 * 29 * (x*s + y*c)];
+  }
+  function line(points, color, width, dash) {
+    element("polyline", { points:points.map(p=>p.join(",")).join(" "),
+      fill:"none", stroke:color, "stroke-width":width, "stroke-linejoin":"round",
+      "stroke-linecap":"round", "stroke-dasharray":dash || "" });
+  }
+  function panel(factor, middle, primed) {
+    const edge = Math.max(2, factor);
+    const grid = [[-edge,-1.6],[edge,-1.6],[edge,1.6],[-edge,1.6],[-edge,-1.6]];
+    line(grid.map(p=>project(p,middle)), "#486074", 1);
+    const p = [[0,0],[factor,0],[0,1],[-factor,-1]].map(v=>project(v,middle));
+    line([p[0],p[1],p[2]],cyan,4);
+    line([p[0],p[3],p[2]],gold,4);
+    line([p[0],p[2]],pale,1.7,"3 4");
+    p.forEach(([x,y],i)=>{
+      element("circle",{cx:x,cy:y,r:3.6,fill:pale});
+      element("text",{x:x+(i===0?-9:7),y:y+(i===0?19:-7),fill:pale,"font-size":17,
+        stroke:"#172736","stroke-width":3,"paint-order":"stroke"},names[i]+(primed?"′":""));
+    });
+  }
+  [[30,"Source  ·  |a − z| = |b − z| = 1"],[204,"Image  ·  horizontal stretch " + L + "×"]]
+    .forEach(([y,label])=>element("text",{x:22,y,fill:pale,"font-size":18,"font-weight":650},label));
+  panel(1,120,false);
+  panel(L,339,true);
+  result.textContent = "Endpoint distance = 1. The two arc diameters are at least " + L + " and √" + (L*L+1) + ".";
+}
+function animate() {
+  if (!playing) return;
+  angle.value = (Number(angle.value) + 1) % 360;
+  draw();
+  frame = requestAnimationFrame(animate);
+}
+stretch.addEventListener("input", draw);
+angle.addEventListener("input", draw);
+spin.addEventListener("click",()=>{
+  playing = !playing;
+  spin.textContent = playing ? "Pause" : "Rotate";
+  spin.setAttribute("aria-pressed", String(playing));
+  if (playing) animate();
+  else cancelAnimationFrame(frame);
+});
+draw();
+</script>

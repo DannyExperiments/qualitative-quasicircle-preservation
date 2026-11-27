@@ -1,0 +1,27 @@
+# Q1722 source and proof audit — November 27, 2026
+
+## Exact edition and scope
+
+- [arXiv version history](https://arxiv.org/abs/2601.09892) shows only v1 (January 14, 2026); exact question and Theorem A are on [printed/PDF p. 2](https://arxiv.org/pdf/2601.09892v1#page=2). The [coauthor publication list](https://sites.google.com/view/alex-nolte-math/home) lists this as arXiv. Exact-title and author searches did not locate a newer author version or a separate published version of record.
+- [§2.2, Remark 1 and Lemma 2.8](https://arxiv.org/html/2601.09892v1#S2.SS2) identify metric bounded turning with the paper's qualitative quasicircle class. The proof needs no uniform equivalence of constants across isotopy classes.
+- The question concerns forward preservation. Tested stronger essential-only preservation in positive genus, and the sphere case is handled with a contractible witness. The graph corollary uses the source's already established homeomorphism representation and faithfulness, not its conditional coarse-order assertion as a premise.
+
+## Likely prior routes tested
+
+1. [Aseev 2016, DOI 10.1134/S0037446616050013](https://doi.org/10.1134/S0037446616050013) assumes a common K for images of small round spheres or circles (see its abstract and the exact plane formulation as Theorem 2.3 of the question source). The qualitative hypothesis does not give that common K. The published uniform implication is not a direct resolution.
+2. [Question source §5.3 and Lemma 5.11](https://arxiv.org/html/2601.09892v1#S5.SS3) extends one small configuration at a time into a uniformly controlled essential curve, then relies on coarse order preservation to get uniform control on the images of those different curves. That is not the one-sided preservation assumption. This proof instead embeds arbitrarily many separate distortion witnesses into one essential curve and derives a contradiction there.
+3. The [metric quasiconformality criterion](https://link.springer.com/book/10.1007/BFb0061216) (Väisälä) controls maps from bounded linear distortion; bounded-turning and finite-point removability are classical. None of those statements supplies the passage from individually controlled curves to linear distortion without a curve construction. Exact wording, close synonyms, follow-up and quasiarc-preservation searches found these classical uniform criteria but no full-scope prior proof. This is a bounded search, not a priority or peer-review certification.
+
+## Mathematical replay
+
+- Negating local QC yields infinitely many distinct bad centers at every fixed threshold. A finite exceptional set would leave a uniformly quasiconformal map on punctured charts; curve families meeting the punctures have zero modulus in source and target, so the bound extends.
+- If the max/min directions nearly coincide or are nearly opposite, the orthogonal intermediate direction gives the separated angle and at least the square root of the original ratio. At angle θ∈[π/4,3π/4], both directed segments have a uniformly positive projection on their bisector, namely the cosine of half their mutual angle.
+- In the scaled patch the shear has triangular form; in each fiber it is an increasing bijection with lower Lipschitz bound 1/2. The radial twist acts as the stated fixed rotation on t∈[0,e·b] and both maps fix the outside of radius 8. Pasting their uniformly bilipschitz maps on disjoint disks is justified for both map and inverse by splitting a straight segment at the fixed disk boundaries.
+- The subarc through the high-distortion point and the complementary subarc through the fixed witness w separately violate the turning estimate. Showing large diameter on just one subarc would not suffice. The baseline topology and passing through each diameter are preserved by the plateau graph and local homeomorphisms.
+
+## Independent literature check — November 28, 2026
+
+- Exact source and scope confirmed from [arXiv v1, Introduction and Theorem A](https://arxiv.org/html/2601.09892v1). The graph theorem reconstructs a homeomorphism without a coarse order assumption. The proof of quasiconformality then uses weak coarse order preservation, allowing a bound by isotopy class, in Theorem 3.4 and §5.3. The version history still lists January 14, 2026 as the only submission. [Author's research list](https://sites.google.com/view/alex-nolte-math/research)
+- Gehring's Definition 12, p. 181 of *Definitions for a Class of Plane Quasiconformal Mappings*, requires a finite supremum of the ordered-quadruple constant over images of all round circles in the plane. Section 14 likewise uses a common bound for all circles contained in a planar domain. The finite constant for each image quasicircle does not supply this supremum. [Gehring, 1967](https://doi.org/10.1017/S0027763000024272)
+- Aseev's planar precursor also assumes one \(k\) for all round circles and bounds the dilatation by \(k+\sqrt{k^2-1}\). The higher-dimensional result retains a common \(K\). [Aseev, 2014](https://www.mathnet.ru/php/archive.phtml?jrnid=smj&option_lang=eng&paperid=2507&wshow=paper) · [Aseev, 2016](https://www.pleiades.online/abstract/simj/16/simj0747_abstract.pdf)
+- Targeted searches used the exact title, arXiv identifier, closing question and qualitative preservation variants for quasicircles, quasiarcs, quasidisks and chord-arc curves. They did not surface an explicit full-scope prior solution or a newer author manuscript. Confidence is high in the comparison with the cited works and moderate in the negative search result. Priority remains open.
