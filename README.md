@@ -1,5 +1,6 @@
 # Qualitative quasicircle preservation implies quasiconformality
 
+[![Lean · two-arc turning obstruction](https://github.com/DannyExperiments/qualitative-quasicircle-preservation/actions/workflows/lean.yml/badge.svg?branch=main)](https://github.com/DannyExperiments/qualitative-quasicircle-preservation/actions/workflows/lean.yml)
 [![Repository verification](https://github.com/DannyExperiments/qualitative-quasicircle-preservation/actions/workflows/verify.yml/badge.svg?branch=main)](https://github.com/DannyExperiments/qualitative-quasicircle-preservation/actions/workflows/verify.yml) · [![Replay verification](https://github.com/DannyExperiments/qualitative-quasicircle-preservation/actions/workflows/replay.yml/badge.svg?branch=main)](https://github.com/DannyExperiments/qualitative-quasicircle-preservation/actions/workflows/replay.yml) · [![PDF build](https://github.com/DannyExperiments/qualitative-quasicircle-preservation/actions/workflows/pdf.yml/badge.svg?branch=main)](https://github.com/DannyExperiments/qualitative-quasicircle-preservation/actions/workflows/pdf.yml)
 [![DOI](visualization/version-doi.svg)](https://doi.org/10.5281/zenodo.24601747)
 
@@ -24,3 +25,7 @@ Take the polygon in cyclic order z = (0,0), a = (1,0), b = (0,1), w = (−1,−1
 ## Verification and status
 
 The finite exact-arithmetic replay checks the worked example and a model plateau and support-disk construction. The full proof supplies the infinite and topological arguments. The independent internal mathematical review checked the theorem and graph corollary. The manuscript has not been peer reviewed. See the [mathematical audit](audits/public_safe_reports/MATHEMATICAL_AUDIT.md), [status](STATUS.md), [scope](CLAIM_SCOPE_AND_LIMITATIONS.md), and [AI disclosure](AI_DISCLOSURE.md).
+
+## Lean verification
+
+In any pseudometric space, if the endpoints approach each other, the local arc has the stated unbounded distortion witnesses, and the complementary arc contains a fixed point separated from the limiting endpoint, Lean proves that no uniform two-arc bounded-turning constant exists. The construction of the common curve and the quasiconformality criterion remain in the paper. [Source and replay](formalization/README.md)
